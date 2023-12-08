@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\BiometricMail;
 use App\Models\Trans;
 use Exception;
 use GuzzleHttp\Client;
@@ -9,6 +10,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Mail;
 
 class AccessCardController extends Controller
 {
@@ -24,6 +26,13 @@ class AccessCardController extends Controller
                 $insert_data = $this->insert_record($getData);
                 return $insert_data;
             } else {
+                $mailData = [
+                    'title' => 'Mail from Annexmed Biometric',
+                    'body' => 'No New Records Found In Biometric Machine'
+                ];
+
+                Mail::to('selva@caliberfocus.com')->send(new BiometricMail($mailData));
+
                 return 'No New Records Found In Biometric Machine';
             }
         } catch (Exception $th) {
