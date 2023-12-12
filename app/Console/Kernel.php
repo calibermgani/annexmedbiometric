@@ -19,7 +19,7 @@ class Kernel extends ConsoleKernel
         // $schedule->command('inspire')->hourly();
         $schedule->call(function (AccessCardController $accessCardController) {
             $accessCardController->insertLiveData();
-        })->everyMinute();
+        })->everyFifteenMinutes();
         // $schedule->call([AccessCardController::class, 'insertLiveData'])->everyMinute();
     }
 
