@@ -18,8 +18,8 @@ class AccessCardController extends Controller
     {
         try {
             $last_id = $this->fetchLastRecord();
-            // $getData = Trans::select('*', DB::raw('ROW_NUMBER() OVER (ORDER BY (SELECT NULL)) AS row_number'))->skip($last_id->trans_id->trans_id)->get();
-            $getData = Trans::select('*', DB::raw('ROW_NUMBER() OVER (ORDER BY (SELECT NULL)) AS row_number'))->skip(1118707)->get();
+            $getData = Trans::select('*', DB::raw('ROW_NUMBER() OVER (ORDER BY (SELECT NULL)) AS row_number'))->skip($last_id->trans_id->trans_id)->get();
+            // $getData = Trans::select('*', DB::raw('ROW_NUMBER() OVER (ORDER BY (SELECT NULL)) AS row_number'))->skip(1118707)->get();
             // dd($getData);
 
             if (!$getData->isEmpty()) {
