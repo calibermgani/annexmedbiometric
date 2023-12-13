@@ -31,7 +31,7 @@ class AccessCardController extends Controller
                     'body' => 'No New Records Found In Biometric Machine'
                 ];
 
-                Mail::to('selva@caliberfocus.com')->send(new BiometricMail($mailData));
+                Mail::to('mgani@caliberfocus.com')->send(new BiometricMail($mailData));
 
                 return 'No New Records Found In Biometric Machine';
             }
