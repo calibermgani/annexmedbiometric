@@ -57,6 +57,7 @@ class AccessCardController extends Controller
             $postResponse = $client->post($url, [
                 'headers' => $headers,
                 'json' => $getData,
+                'timeout' => 1200,
             ]);
 
             // Get the response code
